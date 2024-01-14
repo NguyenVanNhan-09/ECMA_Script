@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab_1 (bài 3)</title>
+</head>
+<body>
+    <form id="stringForm">
+        <label for="inputString">String:</label>
+        <input type="text" id="inputString" required>
+        <button type="button" onclick="convertString()">Convert</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        function convertString() {
+            var inputString = document.getElementById("inputString").value;
+            var camelCaseString = convertToCamelCase(inputString);
+            displayResult(camelCaseString);
+        }
+
+        function convertToCamelCase(inputString) {
+            // /[^a-zA-Z0-9]+(.)/g loại bỏ các ký tự đặc biệt
+            return inputString.replace(/[^a-zA-Z0-9]+(.)/g, function(match, char) {
+                return char.toUpperCase();
+            });
+        }
+
+        function displayResult(resultString) {
+            var resultElement = document.getElementById("result");
+            resultElement.innerHTML = "String: " + resultString;
+        }
+    </script>
+</body>
+</html>

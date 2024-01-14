@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var classRoom = [
+        "Nguyễn Van A",
+        "Hồ Sĩ Hưng",
+        "Lê Trung Hiếu",
+        "Phùng Thanh Độ",
+        "Nguyễn Văn Đạt",
+        "Nghiêm Anh Hiếu",
+        "Nguyễn vừa đẹp trai vừa học ngu Văn Nhân"
+        ];
+
+    // 1. Tách tên và họ riêng
+    var separatedNames = classRoom.map(function(fullName) {
+        var parts = fullName.split(' ');
+        return {
+            firstName: parts.pop(), // Lấy phần tử cuối cùng là first name
+            lastName: parts.join(' ') // nối các phần tử còn lại thành last name
+        };
+    });
+
+    console.log("Separated Names:", separatedNames);
+
+    // 2. Xoá một sinh viên khỏi mảng
+    var deleteStudent = "Phùng Thanh Độ";
+
+    var updatedClassRoom = classRoom.filter(function(student) {
+        return student !== deleteStudent;
+    });
+
+    console.log("Updated Class Room:", updatedClassRoom);
+
+    </script>
+</body>
+</html>

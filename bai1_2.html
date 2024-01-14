@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab_1_2</title>
+</head>
+<body>
+    <!-- form -->
+    <form id="userForm">
+        <label for="idInput">ID:</label>
+        <input type="text" id="idInput">
+        
+        <label for="nameInput">Name:</label>
+        <input type="text" id="nameInput">
+        
+        <label for="genderSelect">Gender:</label>
+        <select id="genderSelect">
+            <option value="1">Male</option>
+            <option value="2">Female</option>
+        </select>
+        
+        <button type="button" onclick="addUser()">Add</button>
+    </form>
+    <!-- index -->
+    <ul id="target"></ul>
+
+    <script>
+        var users = [
+            {id: 1, name: "Nguyen van A", gender: 1},
+            {id: 2, name: "Nguyen van B", gender: 2},
+            {id: 3, name: "Nguyen van C", gender: 2},
+            {id: 4, name: "Nguyen van D", gender: 1}
+        ];
+
+    var target = document.querySelector("#target");
+
+    function addUser() {
+        var id = document.getElementById("idInput").value;
+        var name = document.getElementById("nameInput").value;
+        var gender = document.getElementById("genderSelect").value;
+        var newUser = {id: parseInt(id), name: name, gender: parseInt(gender)};
+        users.push(newUser);
+        updateList();
+    }
+
+    function updateList() {
+        target.innerHTML = "";
+        for (var i = 0; i < users.length; i++) {
+            var user = users[i];
+            var listItem = document.createElement("li");
+            listItem.innerText = user.id + " - " + user.name + " - " + (user.gender === 1 ? "male" : "female");
+            target.appendChild(listItem);
+        }
+    }
+    </script>
+</body>
+</html>
